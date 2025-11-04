@@ -21,7 +21,6 @@
 [![Downloads](https://static.pepy.tech/badge/garak)](https://pepy.tech/project/garak)
 [![Downloads](https://static.pepy.tech/badge/garak/month)](https://pepy.tech/project/garak)
 
-
 ## Get started
 ### > See our user guide! [docs.garak.ai](https://docs.garak.ai/)
 ### > Join our [Discord](https://discord.gg/uVch4puUCs)!
@@ -82,7 +81,6 @@ OK, if that went fine, you're probably good to go!
 git remote set-url origin https://github.com/NVIDIA/garak.git
 ```
 
-
 ## Getting started
 
 The general syntax is:
@@ -113,7 +111,6 @@ See if the Hugging Face version of GPT2 is vulnerable to DAN 11.0
 ```
 python3 -m garak --target_type huggingface --target_name gpt2 --probes dan.Dan_11_0
 ```
-
 
 ## Reading the results
 
@@ -204,7 +201,6 @@ For completion models:
 * `--target_type nim.NVOpenAICompletion`
 * `--target_name` - the NIM `model` name, e.g. `bigcode/starcoder2-15b`
 
-
 ### Test
 
 * `--target_type test`
@@ -217,7 +213,11 @@ For testing. This generator repeats back the prompt it received.
 ## Intro to probes
 
 | Probe                | Description                                                                                                                   |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------|
+|
+
+-|
+
+-|
 | blank                | A simple probe that always sends an empty prompt.                                                                             |
 | atkgen               | Automated Attack Generation. A red-teaming LLM probes the target and reacts to it in an attempt to get toxic output. Prototype, mostly stateless, for now uses a simple GPT-2 [fine-tuned](https://huggingface.co/garak-llm/artgpt2tox) on the subset of hhrlhf attempts that yielded detectable toxicity (the only target currently supported for now). |
 | av_spam_scanning     | Probes that attempt to make the model output malicious content signatures                                                     |
@@ -265,7 +265,6 @@ Each plugin category (`probes`, `detectors`, `evaluators`, `generators`, `harnes
 
 Larger artefacts, like model files and bigger corpora, are kept out of the repository; they can be stored on e.g. Hugging Face Hub and loaded locally by clients using `garak`.
 
-
 ## Developing your own plugin
 
 * Take a look at how other plugins do it
@@ -280,7 +279,6 @@ Larger artefacts, like model files and bigger corpora, are kept out of the repos
     * For detectors, try a blank generator and a blank probe: `python3 -m garak -m test.Blank -p test.Blank -d mymodule`
     * For generators, try a blank probe and always.Pass detector: `python3 -m garak -m mymodule -p test.Blank -d always.Pass`
   * Get `garak` to list all the plugins of the type you're writing, with `--list_probes`, `--list_detectors`, or `--list_generators`
-
 
 ## FAQ
 
